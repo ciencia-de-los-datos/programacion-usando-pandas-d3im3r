@@ -103,7 +103,10 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    df =tbl1
+    df = sorted(df['_c4'].unique())
+    df = list(x.upper() for x in df)
+    return df
 
 
 def pregunta_07():
