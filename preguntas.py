@@ -122,7 +122,11 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
+    df = tbl0
+    df = df.groupby('_c1')
+    df = df.sum('_c2')
+    return df['_c2']
+    
 
 
 def pregunta_08():
