@@ -164,7 +164,9 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    return
+    df = tbl0
+    df['year']= df['_c3'].apply(lambda x:x.split('-')[0])   
+    return df
 
 
 def pregunta_10():
