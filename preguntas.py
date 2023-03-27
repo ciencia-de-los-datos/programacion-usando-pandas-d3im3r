@@ -68,7 +68,10 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+    df = tbl0
+    df = df.groupby('_c1')
+    df=df.mean('_c2')
+    return(df['_c2'])
 
 
 def pregunta_05():
