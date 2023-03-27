@@ -144,7 +144,9 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    df = tbl0
+    df['suma'] = df['_c0']+df['_c2']
+    return (df)
 
 
 def pregunta_09():
