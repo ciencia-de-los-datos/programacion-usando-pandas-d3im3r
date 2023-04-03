@@ -211,7 +211,6 @@ def pregunta_11():
     df=df.sort_values('_c4')
     df=df.groupby('_c0')['_c4'].apply(lambda x: ','.join(x))
     df=df.reset_index()
-    df.columns=['_c0','lista']
     return df
 
 
