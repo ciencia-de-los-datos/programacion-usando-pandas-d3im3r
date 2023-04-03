@@ -183,7 +183,12 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    df = tbl0
+    df = df.sort_values('_c2')
+    df = df.groupby('_c1')['_c2'].apply(lambda x: ':'.join(str(number) for number in x))
+    return df.to_frame()
+
+    
 
 
 def pregunta_11():
@@ -202,7 +207,12 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    df=tbl1
+    df=df.sort_values('_c4')
+    df=df.groupby('_c0')['_c4'].apply(lambda x: ','.join(x))
+    df=df.reset_index()
+    df.columns=['_c0','lista']
+    return df
 
 
 def pregunta_12():
@@ -220,7 +230,13 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    df=tbl2
+    df['_c5b']=df['_c5b'].astype(str)
+    df=df.sort_values(['_c0','_c5a','_c5b'])
+    df['lista']=df['_c5a']+':'+df['_c5b']
+    df=df.groupby('_c0')['lista'].apply(lambda x:','.join(x))
+    df=df.reset_index()
+    return df
 
 
 def pregunta_13():
@@ -237,4 +253,8 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    return
+    df=tbl0
+    df2= pd.read_csv('tbl2.tsv',sep='\t')
+    df3=df.merge(df2,on='_c0')
+    df_final=df3.groupby('_c1')['_c5b'].sum()
+    return df_final
