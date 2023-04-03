@@ -256,4 +256,5 @@ def pregunta_13():
     df2= pd.read_csv('tbl2.tsv',sep='\t')
     df3=df.merge(df2,on='_c0')
     df_final=df3.groupby('_c1')['_c5b'].sum()
+    
     return df_final
